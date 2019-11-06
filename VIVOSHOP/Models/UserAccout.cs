@@ -44,6 +44,8 @@ using System;
         public string User_Email { get; set; }
         [DisplayName("ที่อยู่")]
         public string User_Address { get; set; }
+        [DisplayName("รหัวผ่าน")]
+        public string User_Password { get; set; }
 
         public string LoginErrorMessage { get; set; }
         public string LoginErrorMessageTEL { get; set; }

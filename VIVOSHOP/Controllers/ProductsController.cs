@@ -60,20 +60,27 @@ namespace VIVOSHOP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Pro_Id,ProType_Id,Pro_Name,Pro_Details,Pro_Price,Pro_Color,Pro_Picture,Pro_Amout")] Product product, HttpPostedFileBase Pro_Picture)
         {
-            if (Pro_Picture.ContentLength > 0)
+            try
             {
-                string FileName = Path.GetFileName(Pro_Picture.FileName);
-                string FolderPath = Path.Combine(Server.MapPath("~/image"), FileName);
-                Pro_Picture.SaveAs(FolderPath);
-                product.Pro_Picture = FileName;
-                product.Pro_Amout = 0;
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (Pro_Picture.ContentLength > 0)
+                {
+                    string FileName = Path.GetFileName(Pro_Picture.FileName);
+                    string FolderPath = Path.Combine(Server.MapPath("~/image"), FileName);
+                    Pro_Picture.SaveAs(FolderPath);
+                    product.Pro_Picture = FileName;
+                    product.Pro_Amout = 0;
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.ProType_Id = new SelectList(db.ProductTypes, "ProType_Id", "ProType_Name", product.ProType_Id);
-            return View(product);
+            }
+            catch
+            {
+
+            }
+                ViewBag.ProType_Id = new SelectList(db.ProductTypes, "ProType_Id", "ProType_Name", product.ProType_Id);
+                return View(product);
         }
 
         // GET: Products/Edit/5

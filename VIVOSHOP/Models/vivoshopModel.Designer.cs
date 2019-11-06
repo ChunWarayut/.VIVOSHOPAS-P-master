@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\aaa\VIVOSHOPASP-master190862\VIVOSHOP\Models\vivoshopModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\VIVOSHOPAS-P-master\.VIVOSHOPAS-P-master\VIVOSHOP\Models\vivoshopModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

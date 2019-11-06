@@ -39,10 +39,10 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.User_Tel, htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.LabelFor(model => model.User_Password, htmlAttributes: new { @class = "control-label col-md-12" })
                         <div class="col-md-12">
-                            @Html.EditorFor(model => model.User_Tel, new { htmlAttributes = new { @class = "form-control col-md-12" } })
-                            @Html.ValidationMessageFor(model => model.User_Tel, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(model => model.User_Password, new { @class = "form-control col-md-12" })
+                            @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
                             <label class="text-white">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
 
                         </div>

@@ -68,6 +68,7 @@
           <Property Name="User_Tel" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="User_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="User_Password" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_OrderDetails_ToTable">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
@@ -216,6 +217,7 @@
           <Property Name="User_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductOrders" Relationship="Self.FK_ProductOrder_ToTable" FromRole="UserAccout" ToRole="ProductOrder" />
           <NavigationProperty Name="OrderDetails" Relationship="vivoshopDBModel.FK_OrderDetails_ToTable_1" FromRole="UserAccout" ToRole="OrderDetail" />
+          <Property Name="User_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_OrderDetails_ToTable">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
@@ -355,7 +357,8 @@
     <EntitySetMapping Name="UserAccouts">
       <EntityTypeMapping TypeName="IsTypeOf(vivoshopDBModel.UserAccout)">
         <MappingFragment StoreEntitySet="UserAccouts">
-          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="User_Name" ColumnName="User_Name" />
           <ScalarProperty Name="User_Lastname" ColumnName="User_Lastname" />
           <ScalarProperty Name="User_Sex" ColumnName="User_Sex" />

@@ -18,7 +18,7 @@ namespace VIVOSHOP.Controllers
         [HttpPost]
         public ActionResult Autherize(VIVOSHOP.Models.UserAccout userModel)
         {
-            var userDetail = db.UserAccouts.Where(x => x.User_Email == userModel.User_Email && x.User_Tel == userModel.User_Tel).FirstOrDefault();
+            var userDetail = db.UserAccouts.Where(x => x.User_Email == userModel.User_Email && x.User_Password == userModel.User_Password).FirstOrDefault();
             if (userDetail == null)
             {
                 userModel.LoginErrorMessage = "Email หรือ เบอร์โทรศัพท์ไม่ถูกต้อง";
