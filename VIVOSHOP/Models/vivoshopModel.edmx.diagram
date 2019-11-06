@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d9ad21a590848c0ad564b9f6d111ae3" Name="Diagram1">
+        <EntityTypeShape EntityType="vivoshopDBModel.Bank" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vivoshopDBModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="vivoshopDBModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="vivoshopDBModel.ProductOrder" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vivoshopDBModel.ProductType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vivoshopDBModel.UserAccout" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="vivoshopDBModel.FK_OrderDetails_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="vivoshopDBModel.FK_Product_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="vivoshopDBModel.FK_ProductOrder_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="vivoshopDBModel.FK_OrderDetails_ToTable_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

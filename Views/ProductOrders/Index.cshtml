@@ -1,0 +1,70 @@
+﻿@model IEnumerable<VIVOSHOP.Models.ProductOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<h2>ระบบจัดการข้อมูลการชำระเงิน</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Parcel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAccout.User_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order_Parcel)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserAccout.User_Name)
+    </td>
+    <td>
+        @Html.ActionLink("แก้ไข", "Edit", new { id = item.Order_Id }) |
+        @if (@item.Order_Status == "ชำระแล้ว")
+        {<a>
+                @Html.ActionLink("พิมพ์ใบชำระเงิน", "Details", new { id = item.Order_Id }) |
+            </a>
+        }
+        @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
+    </td>
+</tr>
+    }
+
+</table>

@@ -1,0 +1,144 @@
+﻿@model VIVOSHOP.Models.UserAccout
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body style="background-image: url('../../image/636225.jpg');">
+
+    <style>
+        #login-div {
+            width: 1000px;
+            position: absolute;
+            left: 10%;
+            top: 1%;
+            border: 1px solid #ccc;
+            /*padding: 10px 10px;*/
+            background-image: url('../../image/gradient-abstract-vivo.jpg');
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+        }
+    </style>
+    <div id="login-div">
+        <div class="row">
+            <div class="col-lg-6">
+
+                @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+                {
+
+                    <h2>Login</h2>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.User_Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.User_Email, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(model => model.User_Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.User_Tel, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.User_Tel, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(model => model.User_Tel, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn-success" value="เข้าสู่ระบบ" />
+                            <input type="reset" class="btn-danger" value="ล้างข้อมูล" />
+                        </div>
+                    </div>
+
+
+                }
+
+            </div>
+            <div class="col-lg-6">
+
+                @using (Html.BeginForm("Create", "Login", FormMethod.Post))
+                {
+                    <br />
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.User_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.User_Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.User_Lastname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.User_Sex, new List<SelectListItem>{
+                                    new SelectListItem() {Text = "ชาย", Value="ชาย"},
+                                    new SelectListItem() {Text = "หญิง", Value="หญิง"}
+                                    }, "กรุณาเลือกเพศ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.User_Sex, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.User_Tel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.User_Tel, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.User_Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.User_Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.User_Address, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.User_Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="สมัครสมาชิก" class="btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+
+    </div>
+
+</body>

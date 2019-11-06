@@ -1,0 +1,32 @@
+﻿@model VIVOSHOP.Models.Table
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>คุณแน่ใจหรือว่าต้องการลบข้อมูลนี้?</h3>
+<div>
+    <h4>Table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="ลบข้อมูล" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,72 @@
+﻿@model VIVOSHOP.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>คุณแน่ใจหรือว่าต้องการลบข้อมูลนี้?</h3>
+<div>
+    <h4>Product System</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Picture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Picture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductType.ProType_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductType.ProType_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="ลบข้อมูล" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

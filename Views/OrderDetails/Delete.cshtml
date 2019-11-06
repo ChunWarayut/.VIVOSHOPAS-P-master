@@ -1,0 +1,56 @@
+﻿@model VIVOSHOP.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>คุณแน่ใจหรือว่าต้องการลบข้อมูลนี้?</h3>
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDetails_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDetails_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProOrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProOrderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Pro_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Pro_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

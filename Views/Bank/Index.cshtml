@@ -1,0 +1,88 @@
+﻿@model IEnumerable<VIVOSHOP.Models.Bank>
+
+@{
+    ViewBag.Title = "ระบบจัดการข้อมูลผู้ใช้งาน";
+}
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<div class="row">
+    <div class="col-md-8">
+        <h2>ระบบจัดการข้อมูลธนาคาร</h2>
+        @{
+            if(Session["User_Id"].ToString() == "1")
+            {
+            <p>
+                @Html.ActionLink("เพิ่มข้อมูล", "Create")
+            </p>
+            }
+        }
+
+    </div>
+
+    <div class="col-md-4">
+        <br />
+        @{
+            if (Session["User_Id"].ToString() == "1")
+            {
+                <form method="get" action="/Bank/Index">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <input class="form-control" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                        </div>
+                        <button type="submit" class="btn btn-light">ค้นหา</button>
+                    </div>
+                </form>
+            }
+        }
+
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank_User)
+        </th>
+        @{
+            if (Session["User_Id"].ToString() == "1")
+            {
+                <th></th>
+            }
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bank_Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bank_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bank_User)
+    </td>
+    @{
+        if (Session["User_Id"].ToString() == "1")
+        {
+            <td>
+                @Html.ActionLink("แก้ไข", "Edit", new { id = item.Bank_Number }) |
+                @Html.ActionLink("ลบ", "Delete", new { id = item.Bank_Number })
+            </td>
+        }
+    }
+</tr>
+    }
+
+</table>

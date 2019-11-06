@@ -1,0 +1,56 @@
+﻿@model IEnumerable<VIVOSHOP.Models.Product>
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+@*<div class="jumbotron">
+        <h1>VIVO SHOP </h1>
+        <p class="lead">
+            กล้าที่จะมุ่งสู่ความสมบูรณ์แบบที่แท้จริง
+            พร้อมสร้างความประหลาดใจตลอดเวลา
+        </p>
+    </div>*@
+
+
+<img src="~/image/banner-vivo.jpg" width="100%" />
+<div class="row">
+    <div class="col-md-8">
+        <h2>VIVO SHOP CentralPlaza Nakhon Ratchasima</h2>
+        <p>
+            ยินดีต้อนรับ @Session["User_Name"] @Session["User_Lastname"]
+        </p>
+    </div>
+    <div class="col-md-4">
+        <br />
+        <form method="get" action="/Home/Index">
+            <div class="row">
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-light">ค้นหา</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <a href="/OrderDetails/Create?price=@item.Pro_Price&id=@item.Pro_Id">
+                <div class="card" style="width:20rem;margin:20px 0 24px 0">
+                    <img src="~/image/@Html.DisplayFor(modelItem => item.Pro_Picture)"
+                         alt="company logo"
+                         height="225"
+                         asp-append-version="true" />
+                    <div class="card-body">
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.Pro_Name)</h4>
+                        <p class="card-text">ราคา @Html.DisplayFor(modelItem => item.Pro_Price, new { @class = "form-control", Type = "number" }) บาท </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

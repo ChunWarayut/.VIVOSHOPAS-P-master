@@ -1,0 +1,94 @@
+﻿@model VIVOSHOP.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>ระบบจัดการข้อมูลสินค้า</h2>
+
+
+@using (Html.BeginForm(Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product System</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Pro_Id)
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProType_Id, "ProType_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProType_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ProType_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pro_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Pro_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Pro_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pro_Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Pro_Details, new { @class = "form-control", rows = "10" })
+                        @Html.ValidationMessageFor(model => model.Pro_Details, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pro_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Pro_Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Pro_Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pro_Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Pro_Color, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Pro_Color, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pro_Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Pro_Picture, "", new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.Pro_Picture, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="บันทึกข้อมูล" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="~/image/@Html.DisplayFor(model => model.Pro_Picture)"
+                     alt="company logo"
+                     height="225"
+                     asp-append-version="true" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("ย้อนกลับ", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

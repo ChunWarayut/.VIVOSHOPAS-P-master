@@ -1,0 +1,88 @@
+﻿@model IEnumerable<VIVOSHOP.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<div class="row">
+    <div class="col-md-8">
+        <h2>ระบบจัดการข้อมูลสินค้า</h2>
+        <p>
+            @Html.ActionLink("เพิ่มข้อมูล", "Create")
+        </p>
+    </div>
+    <div class="col-md-4">
+        <br />
+        <form method="get" action="/Products/Index">
+            <div class="row">
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-light">ค้นหา</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType.ProType_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Color)
+    </td>
+    <td>
+
+        <img src="~/image/@Html.DisplayFor(modelItem => item.Pro_Picture)"
+             alt="company logo"
+             height="50px"
+             asp-append-version="true" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductType.ProType_Name)
+    </td>
+    <td>
+        @Html.ActionLink("แก้ไข", "Edit", new { id = item.Pro_Id }) |
+        @Html.ActionLink("ลบ", "Delete", new { id = item.Pro_Id })
+    </td>
+</tr>
+    }
+
+</table>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <header class="blog-header">
+            <img src="~/image/Vivo-Logo-1.png" width="100%" />
+            @*<div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                <a class="text-muted" href="#"> </a>
+            </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-logo text-dark">VIVO CENTRAL NAKHONRATCHASIMA</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+
+            </div>
+            </div>*@
+        </header>
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+
+                @Html.ActionLink("หน้าหลัก", "Index", "Home", new { }, new { @class = "p-2 text-muted" })
+
+                @{
+                    if (Session["User_Id"] != null && Session["User_Id"].ToString() == "1")
+                    {
+                        @Html.ActionLink("ข้อมูลสมาชิก", "Index", "UserAccouts", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลประเภทสินค้า", "Index", "ProductTypes", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลสินค้า", "Index", "Products", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลธนาคาร", "Index", "Bank", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("การชำระเงิน", "Index", "ProductOrders", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("รายงาน", "Index", "Report", new { }, new { @class = "p-2 text-muted" })
+                    }
+                    else if (Session["User_Id"] != null && Session["User_Id"].ToString() != "1")
+                    {
+                        @Html.ActionLink("ตะกร้าสินค้า", "Index", "OrderDetails", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ประวัติการสั่ง", "Index", "History", new { }, new { @class = "p-2 text-muted" })
+                        <a href="UserAccouts/Edit/@Session["User_Id"].ToString()" class="p-2 text-muted">ข้อมูลสมาชิก</a>
+                       
+                            }
+                }
+                @{
+                    if (Session["User_Id"] == null)
+                    {
+                        @Html.ActionLink("เข้าสู่ระบบ", "Index", "Login", new { }, new { @class = "p-2 text-muted" })
+                        @*@Html.ActionLink("สมัครสมาชิก", "Create", "Login", new { }, new { @class = "p-2 text-muted" })*@
+                    }
+                    else
+                    {
+                        @Html.ActionLink("ออกจากระบบ", "Logout", "Login", new { }, new { @class = "p-2 text-muted" })
+                    }
+                }
+
+            </nav>
+        </div>
+    </div>
+    <!-- /.container -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="blog-footer">
+            <center>
+
+                <p> ชั้น 2 เซนทรัลพลาซ่า นครราชสีมา ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000   โทร. 044014230</p>
+
+            </center>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

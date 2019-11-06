@@ -1,0 +1,45 @@
+﻿@model VIVOSHOP.Models.Bank
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>คุณแน่ใจหรือว่าต้องการลบข้อมูลนี้?</h3>
+<div>
+    <h4>Bank System</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bank_Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bank_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank_User)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="ลบข้อมูล" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>
